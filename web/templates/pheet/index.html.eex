@@ -1,0 +1,20 @@
+<div>
+  Hello, <%= @current_user.username %> <%= link "Logout", to: session_path(@conn, :delete) %>
+</div>
+
+<div class="text-center">
+  <%= link "New pheet", to: pheet_path(@conn, :new), class: "btn btn-primary " %>
+</div>
+
+<div id="pheets-wrapper">
+  <%= for pheet <- @pheets do %>
+      <div class="pheet">
+        <div class="pheet-author">
+          <%= pheet.body %>
+        </div>
+        <div class="pheet-author">
+          - <%= pheet.user.username %>
+        </div>
+      </div>
+  <% end %>
+</div>
